@@ -98,6 +98,11 @@ function ConfirmPage () {
       } else {
         item.status = dataArr[item.status];
       }
+
+      // 显示终止合同按钮
+      if (0 < item.status < 4) {
+        dom.find('.over-btn').show().data('status', item.status);
+      }
       
       dom.find("[type='button']").data("id", item.id);
       dom.find("[data-type]").each(function(key, ele){
