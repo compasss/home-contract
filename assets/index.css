@@ -1,0 +1,26 @@
+body {
+  color: #333;
+  line-height: 1.8;
+  letter-spacing: 0.08rem;
+  font-family: open sans, helvetica neue, helvetica, arial, sans-serif
+}
+
+.nav-link {
+  color: rgba(0,0,0,.9);
+}
+
+.card {
+margin: 10px 0 10px 0;
+}
+
+.svg-date{
+  height: 100%;
+  margin: 0 10px;
+}
+
+.svg-wrapper{
+  border: 1px solid #e9ecef;
+}
+.title{
+  text-align: center;
+}

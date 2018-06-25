@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>租房合约</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/index.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">租房合约</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample04">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="./index.html">新建合同 <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./query.html">合同查询</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./my.html">我的合同</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container" id="content-div">
+    <div class="row">
+      <div class="col-md-8 order-md-1">
+        <h4 class="mb-3 mt-3 title">租房合同</h4>
+        <form class="needs-validation mb-4" id="form-data">
+          <div class="form-check col-md-3" style="display: inline-block;">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="1" checked>
+            <label class="form-check-label" for="exampleRadios1">
+              我是房客
+            </label>
+          </div>
+          <div class="form-check col-md-3" style="display: inline-block;">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="0">
+            <label class="form-check-label" for="exampleRadios2">
+              我是房东
+            </label>
+          </div>
+          <div class="form-group">
+            <label for="user-name">房客名称</label>
+            <input type="text" class="form-control" id="user-name" placeholder="请输入房客的名称" required="" data-require="yes">
+            <div class="invalid-feedback" data-type="myName">
+              请输入房客名称
+            </div>
+          </div>
+          <div class="form-group" id="tenant-key" style="display: none">
+            <label for="public-key-1">房客公钥地址</label>
+            <input type="text" class="form-control" id="public-key-1" placeholder="请输入房客公钥" required=""  data-require="no">
+            <div class="invalid-feedback" data-type="publicKey1">
+              请输入房客公钥地址
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="hire-name">房东名称</label>
+            <input type="text" class="form-control" id="hire-name" placeholder="请输入房东名称" required=""  data-require="yes">
+            <div class="invalid-feedback" data-type="otherName">
+              请输入房东名称
+            </div>
+          </div>
+          <div class="form-group" id="renter-key">
+            <label for="public-key-2">房东公钥地址</label>
+            <input type="text" class="form-control" id="public-key-2" placeholder="请输入房东公钥" required=""  data-require="yes">
+            <div class="invalid-feedback" data-type="publicKey2">
+              请输入房东公钥地址
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="hire-name">房屋地址</label>
+            <input type="text" class="form-control" id="house-addr" placeholder="请输入房屋地址" required="" data-require="yes">
+            <div class="invalid-feedback" data-type="hireName">
+              请输入房屋地址
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="address">租约日期</label>
+            <div class="input-group">
+              <div class="input-group-prepend svg-wrapper">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="13px" height="14px" viewBox="0 0 448 512" class="svg-date">
+                    <path fill="#009688" d="M436 160H12c-6.6 0-12-5.4-12-12v-36c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48v36c0 6.6-5.4 12-12 12zM12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm116 204c0-6.6-5.4-12-12-12H76c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12H76c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm128 128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm128 128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40z"/>
+                  </svg>
+              </div>
+              <input type="text" class="form-control col-md-6" id="start-date" placeholder="请选择租约日期" required="" readonly data-require="yes">
+            </div>
+            <div class="invalid-feedback" data-type="startDate">
+              请选择租约日期
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="total-deposit">押金总额（元）</label>
+            <input type="text" class="form-control" id="total-deposit" placeholder="请输入押金总额" required="" data-require="yes">
+            <div class="invalid-feedback" data-type="totalDeposit">
+              请输入押金总额
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="rent-money">每月租金（元）</label>
+            <input type="text" class="form-control" id="rent-money" placeholder="请输入每月租金" required="" data-require="yes">
+            <div class="invalid-feedback" data-type="rentMoney">
+              请输入每月租金
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="extra-text">其他条款</label>
+            <textarea class="form-control" id="extra-text" rows="3"></textarea>
+          </div>
+          <hr class="mb-4">
+          <button class="btn btn-primary btn-lg btn-block" type="submit" id="save-btn">提交</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+  <script src="./assets/nebPay.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <script src="./assets/laydate/laydate.js"></script>
+  <script type="text/javascript" src="./assets/layer/layer.js"></script>
+  <script type="text/javascript" src="./assets/index.js"></script>
+</body>
+
+</html>
