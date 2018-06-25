@@ -79,6 +79,11 @@ function MyPage () {
     var template = $("#card-template");
     var dataArr = ['已创建,等待对方确认', '已确认生效', '已到期', '申请终止合同,等待确认', '已确认终止'];
     $("#record-div").empty();
+    if (!data || data.length < 1) {
+      $("#no-data").show();
+      return false;
+    }
+    $("#no-data").hide();
     $.each(data, function(index, item){
       var dom = template.clone();
       // 取消状态
