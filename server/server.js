@@ -13,7 +13,7 @@ var Contract = function(text) {
         this.term = obj.term //合同条款
         this.cancelProposer = obj.cancelProposer //终止合同申请人
         this.cancelReason = obj.cancelReason //终止合同原因
-        this.status = obj.status //合同状态 0: 已创建,等待对方确认 1: 已确认生效 2: 已到期 3: 申请终止合同, 等待确认 4:已确认终止
+        this.status = obj.status //合同状态 0: 已创建,等待对方确认 -1:等待我确认(展示使用) 1: 已确认生效 2: 已到期 3: 申请终止合同, 等待对方确认 -3:等待我确认终止 4:已确认终止
         this.role = obj.role //合同发起人身份 0: 房东 1:租客
         this.start = obj.start //合同起始时间, unix时间戳
         this.end = obj.end //合同结束时间, unix时间戳
@@ -154,7 +154,19 @@ CrontactManager.prototype = {
                     contract.status = 2
                     this.repo.put(id, contract)
                 }
-                resArr.push(JSON.stringify(contract));
+                // 设置合同标志位
+                //等待我确认的合同
+                if (contract.status === 0 && contract.role === 0 && addr === contract.tenantAddr) {
+                    contract.status = -1
+                }
+                if (contract.status === 0 && contract.role === 1 && addr === contract.renterAddr) {
+                    contract.status = -1
+                }
+                // 等待我确认撤销的合同
+                if (contract.status === 3 && contract.cancelProposer !== addr && (addr === contract.tenantAddr || addr === contract.renterAddr)) {
+                    contract.status = -3
+                }
+                resArr.push(contract);
             }
         }
         return resArr

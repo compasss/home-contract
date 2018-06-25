@@ -21,7 +21,7 @@
             <a class="nav-link" href="./index.html">新建合同<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./confirm.html">合同查询</a>
+            <a class="nav-link" href="./query.html">合同查询</a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="./my.html">我的合同</a>
@@ -31,67 +31,66 @@
   </nav>
   <section class="container" id="content-dev">
     <div class="row">
-      <div class="loading-div" style="height: 200px;text-align: center;display: none">
-        <img src="./assets/loading.gif">
-        <p>正在向星云链请求数据，并汇总，请稍后~~~</p>
-      </div>
-      <div id="no-record" style="display: none;">
-        <div class="alert alert-info" role="alert">
-            当前账户下无欠条
-        </div>
-      </div>
-      <div class="alert alert-info notice" role="alert" style="display: none;">
-          点击确认，欠方确认欠条，并按下手印~
-      </div>
-      <div class="col-md-12 mt-4">
-        <div class="alert alert-info notice" role="alert">
-            点击确认，欠方确认欠条，并按下手印~
-        </div>
-      </div>
       <!-- this.status = obj.status //合同状态 0: 已创建,等待对方确认 1: 已确认生效 2: 已到期 3: 申请终止合同, 等待确认 4:已确认终止 -->
       <div id="record-div" class="col-md-12"></div>
+      <div class="no-data" role="alert" id="no-data" style="display: none">
+        没有查询到数据
+      </div>
       <div id="card-template" style="display: none">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">房客名称：
-              <span class="card-debtor" data-type="tenant">owen</span>
-            </h5>
-            <h5 class="card-title">房客公钥地址：
-              <span class="card-debtor-address" data-type="tenantAddr">sssss</span>
-            </h5>
-            <h5 class="card-title">房东名称：
-              <span class="card-borrow" data-type="renter">kobe</span>
-            </h5>
-            <h5 class="card-title">房东公钥地址：
-              <span class="card-borrow-address" data-type="renterAddr">ss</span>
-            </h5>
-            <h5 class="card-title">开始日期：
-              <span class="card-repay-time" data-type="start">2019-05-09</span>
-            </h5>
-            <h5 class="card-title">结束日期：
-              <span class="card-repay-time" data-type="end">2019-05-09</span>
-            </h5>
-            <h5 class="card-title">押金总额：
-              <span class="card-repay-time" data-type="deposit">123</span>
-            </h5>
-            <h5 class="card-title">每月租金：
-              <span class="card-loan" data-type="rent">200</span>元/月
-            </h5>
-            <h5 class="card-title">合同条款：
-              <span class="card-repay-time" data-type="term">123</span>
-            </h5>
-            <h5 class="card-title" dom-type="cancel" style="display: none">终止合同申请人：
-              <span class="card-loan" data-type="cancelProposer">200</span>
-            </h5>
-            <h5 class="card-title" dom-type="cancel" style="display: none">终止合同原因：
-              <span class="card-loan" data-type="cancelReason">200</span>
-            </h5>
-            <h5 class="card-title">房屋地址：
-              <span class="card-note" data-type="houseAddr">ssss</span>
-            </h5>
-            <p class="card-text">合同状态：
-              <span class="card-note" data-type="status">ssss</span>
-            </p>
+            <div class="item">
+              <p class="card-title">房客名称：</p>
+              <p class="card-content" data-type="tenant"></p>
+            </div>
+            <div class="item">
+              <p class="card-title">房客钱包地址：</p>
+              <p class="card-content" data-type="tenantAddr"></p>
+            </div>
+            <div class="item">
+              <p class="card-title">房东名称：</p>
+              <p class="card-content" data-type="renter"></p>
+            </div>
+            <div class="item">
+              <p class="card-title">房东钱包地址：</p>
+              <p class="card-content" data-type="renterAddr"></p>
+            </div>
+            <div class="item">
+              <p class="card-title">开始日期：</p>
+              <p class="card-content" data-type="startDate"></p>
+            </div>
+            <div class="item">
+              <p class="card-title">结束日期：</p>
+              <p class="card-content" data-type="endDate"></p>
+            </div>
+            <div class="item">
+              <p class="card-title">押金总额：</p>
+              <p class="card-content" data-type="deposit"></p><p>元</p>
+            </div>
+            <div class="item">
+              <p class="card-title">每月租金：</p>
+              <p class="card-content" data-type="rent"></p><p>元/月</p>
+            </div>
+            <div class="item">
+              <p class="card-title">合同条款：</p>
+              <p class="card-content" data-type="term"></p>
+            </div>
+            <div class="item" dom-type="cancel" style="display: none">
+              <p class="card-title">终止合同申请人：</p>
+              <p class="card-content" data-type="cancelProposer"></p>
+            </div>
+            <div class="item" dom-type="cancel" style="display: none">
+              <p class="card-title">终止合同原因：</p>
+              <p class="card-content" data-type="cancelReason"></p>
+            </div>
+            <div class="item">
+              <p class="card-title">房屋地址：</p>
+              <p class="card-content" data-type="houseAddr"></p>
+            </div>
+            <div class="item">
+              <p class="card-title">合同状态：</p>
+              <p class="card-content" data-type="statusText"></p>
+            </div>
             <button type="button" class="confirm-btn btn btn-primary" style="display: none">确认</button>
             <button type="button" class="btn btn-secondary over-btn" style="display: none">终止合同</button>
           </div>

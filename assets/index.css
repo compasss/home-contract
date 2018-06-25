@@ -24,3 +24,28 @@ margin: 10px 0 10px 0;
 .title{
   text-align: center;
 }
+
+#card-template{
+  width: 100%;
+}
+.card-body .item p{
+  display: inline-block;
+  margin-bottom: 5px;
+}
+.card-body .item .card-title{
+  width: 150px;
+}
+.form-query{
+  padding: 0 15px;
+  width: 100%;
+  border-bottom: 1px solid #e5e5e5;
+}
+.no-data{
+  width: 100%;
+  text-align: center;
+  color: #e83e8c;
+}
+
+.layui-layer-shade{
+  background-color: rgba(0,0,0,.4)!important;
+}
