@@ -5,6 +5,7 @@ function IndexPage(){
   this.dateArr = [];
   this.dappAddress = "n1jQxEQVoRaFNVDi5jgSnMnCoxfGJY7UvxG"; // 合约地址
   this.role = 1; // 默认租客 0:房东 1:租客
+  this.walletAddress = '';
 
   this.init = function () {
     if (typeof (webExtensionWallet) === "undefined") {
@@ -71,6 +72,10 @@ function IndexPage(){
       } else {
         params.otherAddr = $("#public-key-2").val();
       }
+      if (params.otherAddr == self.walletAddress) {
+        layer.msg('不能和自己签订合同');
+        return false;
+      }
       $(".invalid-feedback").hide();
       $("input[data-require='yes']").each(function(index, item){
         if (!item.value) {
@@ -101,6 +106,26 @@ function IndexPage(){
       });
     })
   };
+
+  self.getWalletAddress = function () {
+    // 获取当前用户的钱包信息
+    layer.msg('正在初始化页面，请稍后')
+    window.postMessage({
+      "target": "contentscript",
+      "data":{
+      },
+      "method": "getAccount"
+    }, "*");
+    // listen message from contentscript
+    window.addEventListener('message', function(e) {
+      layer.close(self.layerIndex);
+      if (!!e.data.data && !!e.data.data.account) {
+        layer.msg('页面初始化成功');
+        self.walletAddress = e.data.data.account;
+        $("#content-div").show();
+      }
+    })
+  }
 
   this.payHandle = function (res) {
     if (typeof(res) == 'object') {
