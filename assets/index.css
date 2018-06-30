@@ -5,6 +5,10 @@ body {
   font-family: open sans, helvetica neue, helvetica, arial, sans-serif
 }
 
+.height-100{
+  height: 100%;
+}
+
 .nav-link {
   color: rgba(0,0,0,.9);
 }
@@ -48,4 +52,48 @@ margin: 10px 0 10px 0;
 
 .layui-layer-shade{
   background-color: rgba(0,0,0,.4)!important;
+}
+
+.about-content{
+  width: 500px;
+  margin: 0 auto;
+  z-index: 30;
+}
+.about-content p{
+  margin-bottom: 0;
+  text-indent: 2em;
+  color: #fefefe;
+  font-size: 18px;
+}
+.about-wrapper{
+  margin-top: 200px;
+}
+.bg-cover{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -2;
+  background-image: url("./doodles.png");
+}
+.bg-overlay{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.bg-overlay:before{
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: .55;
+  background-color: #212529;
+}
+.top-nav{
+  z-index: 20;
 }
